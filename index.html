@@ -3,39 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For You ❤️</title>
+  <title>Ellie ❤️</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      background: linear-gradient(135deg, #ff5f8f, #ff9acb);
       color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       text-align: center;
+      overflow: hidden;
     }
+
     .card {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      border-radius: 24px;
-      padding: 40px 30px;
-      max-width: 420px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-      animation: fadeIn 1.5s ease;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      padding: 40px 32px;
+      max-width: 430px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      animation: fadeIn 1.6s ease;
+      position: relative;
+      z-index: 2;
     }
+
     h1 {
-      font-size: 2.4rem;
-      margin-bottom: 10px;
+      font-size: 2.5rem;
+      margin-bottom: 12px;
     }
+
     p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+      font-size: 1.15rem;
+      line-height: 1.65;
     }
+
     button {
-      margin-top: 25px;
-      padding: 14px 28px;
+      margin-top: 22px;
+      padding: 14px 30px;
       border: none;
       border-radius: 999px;
       background: #fff;
@@ -44,46 +51,119 @@
       cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
     button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.25);
     }
+
     .hidden {
       display: none;
-      margin-top: 20px;
-      font-size: 1.15rem;
+      margin-top: 18px;
     }
+
+    .choices button {
+      margin: 10px;
+    }
+
+    .countdown {
+      margin-top: 18px;
+      font-weight: 600;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
     }
+
+    .heart {
+      position: absolute;
+      color: rgba(255,255,255,0.8);
+      font-size: 20px;
+      animation: floatUp linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh) scale(1); opacity: 1; }
+      to { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
   </style>
 </head>
 <body>
+
   <div class="card">
-    <h1>Hey You ❤️</h1>
+    <h1>Ellie ❤️</h1>
     <p>
-      This little page exists for one reason only —<br />
-      to remind you how incredibly special you are to me.
+      This page exists for one simple reason —<br />
+      to remind you how special you are to me.
     </p>
+
     <button onclick="revealMessage()">Tap for a surprise 💌</button>
+
     <div id="message" class="hidden">
       <p>
-        Out of all the people in the world,
+        Out of everyone in the world,
         somehow I found <strong>you</strong> —
         and that’s my favourite story.
       </p>
-      <p>
-        Happy Valentine’s Day 💕<br />
-        From me, always.
-      </p>
+
+      <div class="countdown" id="countdown"></div>
+
+      <p style="margin-top:16px;">So Ellie…</p>
+      <p><strong>Will you be my Valentine? 💖</strong></p>
+
+      <div class="choices">
+        <button onclick="yesClicked()">Yes 💕</button>
+        <button onclick="noClicked()">No 🙃</button>
+      </div>
+
+      <p id="response" style="margin-top:14px;"></p>
     </div>
   </div>
 
   <script>
     function revealMessage() {
       document.getElementById('message').classList.remove('hidden');
+      startCountdown();
     }
+
+    function yesClicked() {
+      document.getElementById('response').innerHTML = "You just made me the happiest person ❤️";
+    }
+
+    function noClicked() {
+      document.getElementById('response').innerHTML = "That button was just there for decoration 😉";
+    }
+
+    function startCountdown() {
+      const target = new Date(new Date().getFullYear(), 1, 14);
+      const el = document.getElementById('countdown');
+
+      setInterval(() => {
+        const now = new Date();
+        const diff = target - now;
+        if (diff <= 0) {
+          el.innerHTML = "It’s Valentine’s Day 💘";
+          return;
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        el.innerHTML = `Counting down to Valentine’s Day: ${days} days 💕`;
+      }, 1000);
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+
+    setInterval(createHeart, 350);
   </script>
+
 </body>
 </html>
