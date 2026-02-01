@@ -88,11 +88,53 @@
       from { transform: translateY(100vh) scale(1); opacity: 1; }
       to { transform: translateY(-10vh) scale(1.5); opacity: 0; }
     }
-  </style>
+  
+    .hero {
+      position: relative;
+      margin-bottom: 18px;
+      animation: heroFade 2s ease forwards, heroFloat 6s ease-in-out infinite;
+    }
+
+    .hero img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 0 25px rgba(255, 120, 170, 0.9);
+      filter: blur(0.3px);
+      animation: heroPulse 3.5s ease-in-out infinite;
+    }
+
+    .caption {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    @keyframes heroFade {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes heroPulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(255,120,170,0.8); }
+      50% { box-shadow: 0 0 35px rgba(255,160,200,1); }
+    }
+
+</style>
 </head>
 <body>
 
   <div class="card">
+    <div class="hero">
+      <img src="hero.jpg" alt="My favourite picture" />
+      <div class="caption">My favourite picture 💕</div>
+    </div>
     <h1>Ellie ❤️</h1>
     <p>
       This page exists for one simple reason —<br />
@@ -119,6 +161,11 @@
       </div>
 
       <p id="response" style="margin-top:14px;"></p>
+
+      <div id="memories" class="hidden memories">
+        <div class="memory"><img src="memory1.jpg" alt="Memory 1" /></div>
+        <div class="memory"><img src="memory2.jpg" alt="Memory 2" /></div>
+      </div>
     </div>
   </div>
 
@@ -130,6 +177,7 @@
 
     function yesClicked() {
       document.getElementById('response').innerHTML = "You just made me the happiest person ❤️";
+      document.getElementById('memories').classList.remove('hidden');
     }
 
     function noClicked() {
