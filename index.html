@@ -1,126 +1,215 @@
 <!DOCTYPE html>
-font-size: 20px;
-animation: floatUp linear infinite;
-z-index: 1;
-}
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ellie ❤️</title>
 
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff5f8f, #ff9acb);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
 
-/* ---------- ANIMATIONS ---------- */
-@keyframes fadeIn {
-from { opacity: 0; transform: scale(0.95); }
-to { opacity: 1; transform: scale(1); }
-}
+    .card {
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(14px);
+      border-radius: 28px;
+      padding: 32px 28px 36px;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 1.4s ease;
+    }
 
+    /* ---------- HERO IMAGE ---------- */
+    .hero {
+      margin: -10px auto 14px;
+      animation: heroFloat 6s ease-in-out infinite;
+    }
 
-@keyframes heroFade {
-from { opacity: 0; transform: scale(0.9); }
-to { opacity: 1; transform: scale(1); }
-}
+    .hero img {
+      width: 170px;
+      height: 170px;
+      object-fit: cover;
+      clip-path: path("M85 155 C15 105 -5 65 35 35 C55 15 85 30 85 55 C85 30 115 15 135 35 C175 65 155 105 85 155 Z");
+      box-shadow: 0 0 30px rgba(255,140,190,0.9);
+      filter: blur(0.4px);
+      animation: heroFade 1.8s ease forwards, heroPulse 3.8s ease-in-out infinite;
+      opacity: 0;
+    }
 
+    .hero-caption {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
 
-@keyframes heroPulse {
-0%, 100% { box-shadow: 0 0 22px rgba(255,140,190,0.7); }
-50% { box-shadow: 0 0 38px rgba(255,180,215,1); }
-}
+    /* ---------- TEXT ---------- */
+    h1 {
+      font-size: 2.4rem;
+      margin: 10px 0 8px;
+    }
 
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 6px 0;
+    }
 
-@keyframes heroFloat {
-0%, 100% { transform: translateY(0); }
-50% { transform: translateY(-6px); }
-}
+    button {
+      margin-top: 18px;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 999px;
+      background: #fff;
+      color: #ff4f81;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+    }
 
-@keyframes memoryFade {
-from { opacity: 0; transform: translateY(6px); }
-to { opacity: 1; transform: translateY(0); }
-}
+    .hidden { display: none; }
 
+    /* ---------- MEMORIES ---------- */
+    .memories {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      animation: fadeIn 1.2s ease;
+    }
 
-@keyframes floatUp {
-from { transform: translateY(100vh); opacity: 1; }
-to { transform: translateY(-10vh); opacity: 0; }
-}
-</style>
+    .memory img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      clip-path: path("M45 82 C8 55 -3 35 18 18 C28 8 45 15 45 30 C45 15 62 8 72 18 C93 35 82 55 45 82 Z");
+      box-shadow: 0 0 18px rgba(255,150,200,0.85);
+      filter: blur(0.3px);
+      animation: memoryFade 1.2s ease forwards;
+    }
+
+    /* ---------- HEARTS ---------- */
+    .heart {
+      position: absolute;
+      color: rgba(255,255,255,0.8);
+      font-size: 20px;
+      animation: floatUp linear infinite;
+      z-index: 1;
+    }
+
+    /* ---------- ANIMATIONS ---------- */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes heroFade {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes heroPulse {
+      0%, 100% { box-shadow: 0 0 22px rgba(255,140,190,0.7); }
+      50% { box-shadow: 0 0 38px rgba(255,180,215,1); }
+    }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes memoryFade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100vh); opacity: 1; }
+      to { transform: translateY(-10vh); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
 
+  <div class="card">
 
-<div class="card">
+    <div class="hero">
+      <img src="hero.jpg" alt="My favourite picture" />
+      <div class="hero-caption">My favourite picture 💕</div>
+    </div>
 
+    <h1>Ellie ❤️</h1>
+    <p>
+      This page exists for one simple reason —<br />
+      to remind you how special you are to me.
+    </p>
 
-<div class="hero">
-<img src="hero.jpg" alt="My favourite picture" />
-<div class="hero-caption">My favourite picture 💕</div>
-</div>
+    <button onclick="revealMessage()">Tap for a surprise 💌</button>
 
+    <div id="message" class="hidden">
+      <p>
+        Out of everyone in the world,
+        somehow I found <strong>you</strong> —
+        and that’s my favourite story.
+      </p>
 
-<h1>Ellie ❤️</h1>
-<p>
-This page exists for one simple reason —<br />
-to remind you how special you are to me.
-</p>
+      <p style="margin-top:14px;"><strong>Will you be my Valentine? 💖</strong></p>
 
+      <button onclick="yesClicked()">Yes 💕</button>
+      <button onclick="noClicked()">No 🙃</button>
 
-<button onclick="revealMessage()">Tap for a surprise 💌</button>
+      <p id="response" style="margin-top:14px;"></p>
 
+      <div id="memories" class="hidden memories">
+        <div class="memory"><img src="memory1.jpg" alt="Memory 1"></div>
+        <div class="memory"><img src="memory2.jpg" alt="Memory 2"></div>
+      </div>
+    </div>
+  </div>
 
-<div id="message" class="hidden">
-<p>
-Out of everyone in the world,
-somehow I found <strong>you</strong> —
-and that’s my favourite story.
-</p>
+  <script>
+    function revealMessage() {
+      document.getElementById('message').classList.remove('hidden');
+    }
 
+    function yesClicked() {
+      document.getElementById('response').innerHTML = "You just made me the happiest person ❤️";
+      document.getElementById('memories').classList.remove('hidden');
+    }
 
-<p style="margin-top:14px;"><strong>Will you be my Valentine? 💖</strong></p>
+    function noClicked() {
+      document.getElementById('response').innerHTML = "That button was just there for decoration 😉";
+    }
 
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
 
-<button onclick="yesClicked()">Yes 💕</button>
-<button onclick="noClicked()">No 🙃</button>
-
-
-<p id="response" style="margin-top:14px;"></p>
-
-
-<div id="memories" class="hidden memories">
-<div class="memory"><img src="memory1.jpg" alt="Memory 1"></div>
-<div class="memory"><img src="memory2.jpg" alt="Memory 2"></div>
-</div>
-</div>
-</div>
-
-
-<script>
-function revealMessage() {
-document.getElementById('message').classList.remove('hidden');
-}
-
-
-function yesClicked() {
-document.getElementById('response').innerHTML = "You just made me the happiest person ❤️";
-document.getElementById('memories').classList.remove('hidden');
-}
-
-
-function noClicked() {
-document.getElementById('response').innerHTML = "That button was just there for decoration 😉";
-}
-
-
-function createHeart() {
-const heart = document.createElement('div');
-heart.className = 'heart';
-heart.innerHTML = '❤️';
-heart.style.left = Math.random() * 100 + 'vw';
-heart.style.animationDuration = (4 + Math.random() * 4) + 's';
-document.body.appendChild(heart);
-setTimeout(() => heart.remove(), 8000);
-}
-
-
-setInterval(createHeart, 400);
-</script>
-
+    setInterval(createHeart, 400);
+  </script>
 
 </body>
 </html>
